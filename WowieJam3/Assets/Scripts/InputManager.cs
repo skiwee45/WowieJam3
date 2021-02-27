@@ -23,7 +23,12 @@ namespace GameManagers
 		{
 			controls = new InputControls();
 			EnableGameplayMap(true);
+			
 			//sign up methods
+			controls.Gameplay.Movement.performed += Move;
+			//have to subscribe to canceled event as well for Move vector to reset to 0
+			//if don't subscribe, when player stops pressing keys, it will take last input forever
+			controls.Gameplay.Movement.canceled += Move;
 		}
 
 		//special method to enable / disable maps
@@ -38,7 +43,7 @@ namespace GameManagers
 			}
 		}
 	
-		public void MoveInput(InputAction.CallbackContext value)
+		public void Move(InputAction.CallbackContext value)
 		{
 			var input = value.ReadValue<Vector2>();
 			move?.Invoke(input);
