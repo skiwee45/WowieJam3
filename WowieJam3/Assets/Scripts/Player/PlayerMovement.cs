@@ -7,51 +7,72 @@ using TMPro;
 
 public class PlayerMovement : MonoBehaviour
 {
+	//config
 	[SerializeField] private float speed;
 	[SerializeField] private float dashSpeed;
-	//[SerializeField] MaskedSlider dashCooldownUI;
+	[SerializeField] private float dashCooldown;
+	
+	//references
 	private Rigidbody2D rb;
-	private Vector2 movement;
-	Timer dashCooldownTimer;
+	private Timer dashCooldownTimer;
+	
+	//state
+	private Vector2 deltaMovement;
+	private bool dash;
 	bool canDash = true;
-	CapsuleCollider2D capsuleCollider2D;
-	Animator animator;
-	ParticleSystem dashEffect;
-    
-	void Start()
+	
+	// Awake is called when the script instance is being loaded.
+	protected void Start()
 	{
 		rb = GetComponent<Rigidbody2D>();
-
-		capsuleCollider2D = GetComponent<CapsuleCollider2D>();
-		dashEffect = GetComponentInChildren<ParticleSystem>();
-		animator = GetComponent<Animator>();
-
+		
 		dashCooldownTimer = gameObject.AddComponent<Timer>();
-		dashCooldownTimer.Duration = 3f;
+		dashCooldownTimer.Duration = dashCooldown;
 		dashCooldownTimer.AddTimerFinishedListener(HandleDashCooldownFinished);
 	}
-
-	void Update()
+	
+	public void Reset(Vector2 position)
 	{
-		movement.x = Input.GetAxisRaw("Horizontal");
-		movement.y = Input.GetAxisRaw("Vertical");
-        
-		//dashCooldownUI.moveSlider(dashCooldownTimer.SecondsLeft);
+		transform.position = position;
+		rb.velocity = Vector2.zero;
+		canDash = true;
+	}
+	
+	//input
+	public void MoveInput(Vector2 input)
+	{
+		deltaMovement = input;
+	}
+	
+	public void DashInput()
+	{
+		dash = canDash;
 	}
 
 	private void FixedUpdate()
 	{
-		rb.AddForce(movement * (speed * Time.deltaTime), ForceMode2D.Force);
-
-		if(canDash && (Input.GetAxis("Jump") > 0 && (movement.y > 0 || movement.x > 0 || movement.y < 0 || movement.x < 0))){
-			canDash = false;
-			rb.AddForce(movement * (dashSpeed * Time.deltaTime), ForceMode2D.Impulse);
-			dashEffect.Play();
+		Move(deltaMovement * speed, dash);
+	}
+	
+	private void Move(Vector2 move, bool dash)
+	{
+		rb.AddForce(move, ForceMode2D.Force);
+		if (dash)
+		{
+			if (move.magnitude == 0)
+			{
+				//not moving in a direction so no dash
+				return;
+			}
+			this.dash = false;
+			this.canDash = false;
+			rb.AddForce(move.normalized * dashSpeed, ForceMode2D.Impulse);
 			dashCooldownTimer.Run();
 		}
 	}
 
-	void HandleDashCooldownFinished(){
+	void HandleDashCooldownFinished()
+	{
 		canDash = true;
 	}
 }
