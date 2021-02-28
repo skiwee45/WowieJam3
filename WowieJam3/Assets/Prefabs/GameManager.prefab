@@ -86,6 +86,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c9b40840895fe9458229018cf3318e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  deathChoices: {fileID: 0}
 --- !u!114 &1537084725
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -115,9 +116,11 @@ MonoBehaviour:
     type: 3}
   ballPrefabs:
   - {fileID: 6109484081697993536, guid: d6fb73a7dcf29fd4eb93c6d36236a310, type: 3}
-  ballSpawnXRange: {x: -4, y: 4}
-  ballSpawnYRange: {x: -2, y: 2}
-  ballStartingInitialForce: 5
-  ballInitialForceIncrement: 1
+  blockPrefab: {fileID: 3990914715948754809, guid: 308db627a3989e84ea4f112164469d72,
+    type: 3}
+  ballSpawnXRange: {x: -6, y: 6}
+  ballSpawnYRange: {x: -3, y: 3}
+  ballStartingInitialForce: 7
+  ballInitialForceIncrement: 2
   Player: {fileID: 0}
   Balls: []

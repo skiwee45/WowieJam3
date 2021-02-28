@@ -59,12 +59,12 @@ public class PlayerMovement : MonoBehaviour
 		rb.AddForce(move, ForceMode2D.Force);
 		if (dash)
 		{
+			this.dash = false;
 			if (move.magnitude == 0)
 			{
 				//not moving in a direction so no dash
 				return;
 			}
-			this.dash = false;
 			this.canDash = false;
 			rb.AddForce(move.normalized * dashSpeed, ForceMode2D.Impulse);
 			dashCooldownTimer.Run();

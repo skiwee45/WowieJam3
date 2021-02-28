@@ -7,17 +7,22 @@ using System.Linq;
 public class GameManager : MonoBehaviour
 {
 	//config
+	[Header("Prefabs")]
 	[SerializeField] private GameObject playerPrefab;
 	[SerializeField] private List<GameObject> ballPrefabs;
+	[SerializeField] private GameObject blockPrefab;
+	[Header("Configuration")]
 	[SerializeField] private Vector2 ballSpawnXRange;
 	[SerializeField] private Vector2 ballSpawnYRange;
 	[SerializeField] private float ballStartingInitialForce;
 	[SerializeField] private float ballInitialForceIncrement;
 	
-	//state
+	//runtime variables
 	private float ballInitialForce;
+	private Vector2 boxSpawnPosition;
 	
-	//cached GameObjects
+	//caches gameobjects
+	[Header("Cached Objects")]
 	public PlayerMovement Player = null;
 	public List<Ball> Balls;
 	
@@ -25,6 +30,7 @@ public class GameManager : MonoBehaviour
 	protected void Awake()
 	{
 		ballInitialForce = ballStartingInitialForce;
+		boxSpawnPosition = Vector2.zero;
 		CacheObjects();
 		ResetBalls();
 	}
@@ -35,12 +41,36 @@ public class GameManager : MonoBehaviour
 		Balls = GameObject.FindObjectsOfType<Ball>().ToList<Ball>();
 	}
 	
+	public void HandleDeathAction(DeathActionType action)
+	{
+		switch (action)
+		{
+		case DeathActionType.NewBall: 
+			SpawnBall(Balls.Count - 1);
+			break;
+			
+		case DeathActionType.FasterBall: 
+			IncrementBallInitialForce();
+			break;
+			
+		case DeathActionType.SpawnWall: 
+			SpawnBlock();
+			break;
+			
+		default:
+			Debug.Log("No action");
+			break;
+		}
+	}
+	
 	//player
 	public void SpawnPlayer(Vector2 position)
 	{
 		Debug.Log("Spawn");
+		
 		if (Player != null)
 		{
+			boxSpawnPosition = Player.transform.position;
 			Player.Reset(position);
 			return;
 		}
@@ -65,7 +95,7 @@ public class GameManager : MonoBehaviour
 	
 	public void SpawnBall()
 	{
-		SpawnBall(0);
+		SpawnBall(Balls.Count - 1);
 	}
 	
 	public void ResetBalls()
@@ -82,11 +112,30 @@ public class GameManager : MonoBehaviour
 		ballInitialForce += ballInitialForceIncrement;
 	}
 	
-	
 	//helper
 	private Vector2 GetRandomBallPosition()
 	{
-		return new Vector2(Random.Range(ballSpawnXRange.x, ballSpawnXRange.y)
-			, Random.Range(ballSpawnYRange.x, ballSpawnYRange.y));
+		Vector2 randomPosition = Vector2.zero;
+		
+		//make sure balls don't spawn on player
+		do {
+			randomPosition.x = Random.Range(ballSpawnXRange.x, ballSpawnXRange.y);
+			randomPosition.y = Random.Range(ballSpawnYRange.x, ballSpawnYRange.y);
+		} while (randomPosition.magnitude <= Player.transform.localScale.magnitude * 2);
+		
+		return randomPosition;
 	}
+	
+	//wall
+	public void SpawnBlock()
+	{
+		Instantiate(blockPrefab, boxSpawnPosition, Quaternion.identity);
+	}
+}
+
+public enum DeathActionType
+{
+	NewBall,
+	FasterBall,
+	SpawnWall
 }

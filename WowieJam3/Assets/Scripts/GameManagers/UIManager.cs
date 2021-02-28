@@ -1,18 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.Events;
 
 public class UIManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+	//references
+	[SerializeField] private GameObject deathChoices;
+	
+	public void EnableDeathChoices(bool enable)
+	{
+		deathChoices.SetActive(enable);
+		Time.timeScale = enable ? 0 : 1;
+	}
 }
