@@ -10,6 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 5894868839209293615}
   - component: {fileID: 5894868839209293614}
+  - component: {fileID: 1537084724}
+  - component: {fileID: 1537084725}
+  - component: {fileID: 1537084726}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -45,4 +48,79 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   move:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_MethodName: MoveInput
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  dash:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_MethodName: DashInput
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1537084724
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5894868839209293613}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c9b40840895fe9458229018cf3318e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deathChoices: {fileID: 0}
+--- !u!114 &1537084725
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5894868839209293613}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7e47dafda28b2e4ba87f22b1388c632, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <Score>k__BackingField: 0
+--- !u!114 &1537084726
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5894868839209293613}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6252498031cde84ab8c4e7880e6b82b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerPrefab: {fileID: 8064662669307483690, guid: bca27c01de171564b9f44bee33b770b2,
+    type: 3}
+  ballPrefabs:
+  - {fileID: 6109484081697993536, guid: d6fb73a7dcf29fd4eb93c6d36236a310, type: 3}
+  blockPrefab: {fileID: 3990914715948754809, guid: 308db627a3989e84ea4f112164469d72,
+    type: 3}
+  ballSpawnXRange: {x: -6, y: 6}
+  ballSpawnYRange: {x: -3, y: 3}
+  ballStartingInitialForce: 7
+  ballInitialForceIncrement: 2
+  Player: {fileID: 0}
+  Balls: []

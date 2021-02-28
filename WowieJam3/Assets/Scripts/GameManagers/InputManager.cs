@@ -17,6 +17,7 @@ namespace GameManagers
 	
 		//unityevents to call
 		public Vector2Event move;
+		public UnityEvent dash;
 
 		// Awake is called when the script instance is being loaded.
 		protected void Awake()
@@ -29,6 +30,8 @@ namespace GameManagers
 			//have to subscribe to canceled event as well for Move vector to reset to 0
 			//if don't subscribe, when player stops pressing keys, it will take last input forever
 			controls.Gameplay.Movement.canceled += Move;
+			
+			controls.Gameplay.Dash.performed += Dash;
 		}
 
 		//special method to enable / disable maps
@@ -42,11 +45,18 @@ namespace GameManagers
 				controls.Gameplay.Disable();
 			}
 		}
+		
+		//input receivers
 	
 		public void Move(InputAction.CallbackContext value)
 		{
 			var input = value.ReadValue<Vector2>();
 			move?.Invoke(input);
+		}
+		
+		public void Dash(InputAction.CallbackContext value)
+		{
+			dash?.Invoke();
 		}
 	}
 }
