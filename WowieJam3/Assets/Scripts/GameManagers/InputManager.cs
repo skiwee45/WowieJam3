@@ -11,7 +11,7 @@ namespace GameManagers
 	[Serializable]
 	public class Vector2Event : UnityEvent<Vector2>{}
 	
-	public class InputManager : MonoBehaviour
+	public class InputManager : MonoBehaviour, IGameManager
 	{
 		InputControls controls;
 	

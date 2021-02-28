@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using System.Linq;
+using Pixelplacement;
 
-public class GameManager : MonoBehaviour
+public class GameManager : Singleton<GameManager>, IGameManager
 {
 	//config
 	[Header("Prefabs")]
@@ -16,9 +17,11 @@ public class GameManager : MonoBehaviour
 	[SerializeField] private Vector2 ballSpawnYRange;
 	[SerializeField] private float ballStartingInitialForce;
 	[SerializeField] private float ballInitialForceIncrement;
+	[SerializeField] private string bulletTag;
 	
 	//runtime variables
-	private float ballInitialForce;
+	[HideInInspector]
+	public float ballInitialForce;
 	private Vector2 boxSpawnPosition;
 	
 	//caches gameobjects
@@ -26,12 +29,16 @@ public class GameManager : MonoBehaviour
 	public PlayerMovement Player = null;
 	public List<Ball> Balls;
 	
+	[Header("Cached GameManager Components")]
+	public List<Component> GameManagers;
+	
 	// Awake is called when the script instance is being loaded.
 	protected void Awake()
 	{
 		ballInitialForce = ballStartingInitialForce;
 		boxSpawnPosition = Vector2.zero;
 		CacheObjects();
+		CacheComponents();
 		ResetBalls();
 	}
 	
@@ -41,26 +48,36 @@ public class GameManager : MonoBehaviour
 		Balls = GameObject.FindObjectsOfType<Ball>().ToList<Ball>();
 	}
 	
-	public void HandleDeathAction(DeathActionType action)
+	private void CacheComponents()
 	{
-		switch (action)
+		GameManagers = GetComponents<IGameManager>().ToList<IGameManager>().ConvertAll(x => x as Component);
+	}
+	
+	public T TryGetComponent<T>() where T : Component
+	{
+		var item = GameManagers.Find(component => component is T);
+		if (item == null)
 		{
-		case DeathActionType.NewBall: 
-			SpawnBall(Balls.Count - 1);
-			break;
-			
-		case DeathActionType.FasterBall: 
-			IncrementBallInitialForce();
-			break;
-			
-		case DeathActionType.SpawnWall: 
-			SpawnBlock();
-			break;
-			
-		default:
-			Debug.Log("No action");
-			break;
+			item = GetComponent<T>();
+			if (item == null)
+			{
+				item = gameObject.AddComponent<T>();
+			}
+			GameManagers.Add(item);
 		}
+		
+		return item as T;
+	}
+	
+	public List<T> TryGetComponents<T>() where T : Component
+	{
+		List<T> item = GameManagers.Where<Component>(component => component is T).ToList<Component>().ConvertAll(x => (T)x);
+		if (!item.Any())
+		{
+			item.Add(TryGetComponent<T>());
+		}
+		
+		return item;
 	}
 	
 	//player
@@ -91,19 +108,31 @@ public class GameManager : MonoBehaviour
 		var newBall = Instantiate(ballPrefabs[ballIndex]).GetComponent<Ball>();
 		Balls.Add(newBall);
 		newBall.Reset(GetRandomBallPosition(), ballInitialForce);
+		newBall.OnHitWall.AddListener(TryGetComponent<ScoreManager>().AddScore);
 	}
 	
 	public void SpawnBall()
 	{
-		SpawnBall(Balls.Count - 1);
+		SpawnBall(Balls.Count);
 	}
 	
 	public void ResetBalls()
 	{
-		Debug.Log("Reset Balls");
+		//reset balls and bullets
 		foreach (var ball in Balls)
 		{
 			ball.Reset(GetRandomBallPosition(), ballInitialForce);
+		}
+		
+		foreach (var bullet in GameObject.FindGameObjectsWithTag(bulletTag))
+		{
+			GameObject.Destroy(bullet);
+		}
+		
+		//reset timer
+		foreach (var item in TryGetComponents<BallTickManager>())
+		{
+			item.Reset();
 		}
 	}
 	
@@ -131,11 +160,4 @@ public class GameManager : MonoBehaviour
 	{
 		Instantiate(blockPrefab, boxSpawnPosition, Quaternion.identity);
 	}
-}
-
-public enum DeathActionType
-{
-	NewBall,
-	FasterBall,
-	SpawnWall
 }

@@ -1024,7 +1024,7 @@ EdgeCollider2D:
   m_GameObject: {fileID: 810660376}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 61528cc6e7c39f643b2b79778071a930, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -1042,7 +1042,7 @@ EdgeCollider2D:
   m_GameObject: {fileID: 810660376}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 61528cc6e7c39f643b2b79778071a930, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -1060,7 +1060,7 @@ EdgeCollider2D:
   m_GameObject: {fileID: 810660376}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 61528cc6e7c39f643b2b79778071a930, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -1078,7 +1078,7 @@ EdgeCollider2D:
   m_GameObject: {fileID: 810660376}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 61528cc6e7c39f643b2b79778071a930, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -1535,6 +1535,19 @@ PrefabInstance:
       propertyPath: deathChoices
       value: 
       objectReference: {fileID: 803022844}
+    - target: {fileID: 1537084726, guid: 4b2c5d64bf52e854481473ca2fd67128, type: 3}
+      propertyPath: bulletTag
+      value: Bullet
+      objectReference: {fileID: 0}
+    - target: {fileID: 1537084726, guid: 4b2c5d64bf52e854481473ca2fd67128, type: 3}
+      propertyPath: ballPrefabs.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1537084726, guid: 4b2c5d64bf52e854481473ca2fd67128, type: 3}
+      propertyPath: ballPrefabs.Array.data[3]
+      value: 
+      objectReference: {fileID: 5695983852038747418, guid: ee00b7cec19a62849a1ecf746d57726d,
+        type: 3}
     - target: {fileID: 5894868839209293613, guid: 4b2c5d64bf52e854481473ca2fd67128,
         type: 3}
       propertyPath: m_Name
@@ -1617,6 +1630,11 @@ PrefabInstance:
     - target: {fileID: 6109484081697993536, guid: d6fb73a7dcf29fd4eb93c6d36236a310,
         type: 3}
       propertyPath: m_Name
+      value: Ball
+      objectReference: {fileID: 0}
+    - target: {fileID: 6109484081697993536, guid: d6fb73a7dcf29fd4eb93c6d36236a310,
+        type: 3}
+      propertyPath: m_TagString
       value: Ball
       objectReference: {fileID: 0}
     - target: {fileID: 6109484081697993563, guid: d6fb73a7dcf29fd4eb93c6d36236a310,

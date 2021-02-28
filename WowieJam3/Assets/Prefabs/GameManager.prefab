@@ -13,6 +13,9 @@ GameObject:
   - component: {fileID: 1537084724}
   - component: {fileID: 1537084725}
   - component: {fileID: 1537084726}
+  - component: {fileID: 5883317200621241290}
+  - component: {fileID: 1453500732}
+  - component: {fileID: 1453500730}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -112,15 +115,66 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6252498031cde84ab8c4e7880e6b82b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _dontDestroyOnLoad: 0
   playerPrefab: {fileID: 8064662669307483690, guid: bca27c01de171564b9f44bee33b770b2,
     type: 3}
   ballPrefabs:
   - {fileID: 6109484081697993536, guid: d6fb73a7dcf29fd4eb93c6d36236a310, type: 3}
+  - {fileID: 5408293172353868585, guid: 6d90c49e96259214db8e25c39ad06ffe, type: 3}
+  - {fileID: 4125992334976870337, guid: 6222dbe7941326942bf0728edcc153fb, type: 3}
   blockPrefab: {fileID: 3990914715948754809, guid: 308db627a3989e84ea4f112164469d72,
     type: 3}
   ballSpawnXRange: {x: -6, y: 6}
   ballSpawnYRange: {x: -3, y: 3}
   ballStartingInitialForce: 7
   ballInitialForceIncrement: 2
+  ballInitialForce: 0
   Player: {fileID: 0}
   Balls: []
+  GameManagers: []
+--- !u!114 &5883317200621241290
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5894868839209293613}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55938fb1577dd4ad3af7e994048c86f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1453500732
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5894868839209293613}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ca4adabe14ea0d44b81b4e7bbd85659, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 0
+  tickRate: 5
+  ballTick:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &1453500730
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5894868839209293613}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ca4adabe14ea0d44b81b4e7bbd85659, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 1
+  tickRate: 5
+  ballTick:
+    m_PersistentCalls:
+      m_Calls: []

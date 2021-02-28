@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
 
-public class UIManager : MonoBehaviour
+public class UIManager : MonoBehaviour, IGameManager
 {
 	//references
 	[SerializeField] private GameObject deathChoices;

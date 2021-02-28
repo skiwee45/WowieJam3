@@ -29,16 +29,12 @@ public class Ball : MonoBehaviour
 	protected void OnCollisionEnter2D(Collision2D collisionInfo)
 	{
 		var otherGameObject = collisionInfo.gameObject;
-		Debug.Log(otherGameObject.name);
 		if (otherGameObject.CompareTag(wallTag))
 		{
 			HandleHitWall(collisionInfo);
 		} else if (otherGameObject.CompareTag(playerTag))
 		{
 			HandleHitPlayer(otherGameObject);
-		} else
-		{
-			Debug.Log("Nothing important hit");
 		}
 	}
 	

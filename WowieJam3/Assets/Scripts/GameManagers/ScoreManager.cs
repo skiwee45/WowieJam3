@@ -6,7 +6,7 @@ using UnityEngine;
 /// keep score
 /// have methods to add score
 /// </summary>
-public class ScoreManager : MonoBehaviour
+public class ScoreManager : MonoBehaviour, IGameManager
 {
 	[field: SerializeField]
 	public float Score {get; private set;}
