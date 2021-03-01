@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerTag: Player
-  maxBounce: 2
+  maxBounce: 3
   ignoreBouncesTag: Ball
 --- !u!1001 &2309404775651106742
 PrefabInstance:

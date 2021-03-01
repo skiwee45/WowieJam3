@@ -24,7 +24,7 @@ public class BallTimeEffect : MonoBehaviour
 		}
 		
 		var percent = timeLeft / seconds;
-		var scale = Mathf.Lerp(1, 0, percent);
+		var scale = Mathf.Lerp(0, 1, percent);
 	    
 		circle.localScale = new Vector3(scale, scale, 1);
 	}

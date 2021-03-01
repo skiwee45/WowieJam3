@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45a8bd3c384143d4389a80075ce3cf8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletSpeed: 7.5
+  bulletSpeed: 10
   shootDirections: 2
   bulletSpawnRadius: 1
   bulletPrefab: {fileID: 5092638197011951635, guid: 0637ee9814ad35746a4109d75365cec7,
@@ -41,12 +41,12 @@ PrefabInstance:
     - target: {fileID: 4125992334976870364, guid: 6222dbe7941326942bf0728edcc153fb,
         type: 3}
       propertyPath: m_Color.b
-      value: 0.43863487
+      value: 0.66400194
       objectReference: {fileID: 0}
     - target: {fileID: 4125992334976870364, guid: 6222dbe7941326942bf0728edcc153fb,
         type: 3}
       propertyPath: m_Color.g
-      value: 0
+      value: 0.25490198
       objectReference: {fileID: 0}
     - target: {fileID: 4125992334976870364, guid: 6222dbe7941326942bf0728edcc153fb,
         type: 3}
@@ -110,6 +110,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6184787671106939413, guid: 6222dbe7941326942bf0728edcc153fb,
         type: 3}
+      propertyPath: m_Color.a
+      value: 0.7294118
+      objectReference: {fileID: 0}
+    - target: {fileID: 6184787671106939413, guid: 6222dbe7941326942bf0728edcc153fb,
+        type: 3}
       propertyPath: m_Color.b
       value: 1
       objectReference: {fileID: 0}
@@ -121,13 +126,18 @@ PrefabInstance:
     - target: {fileID: 6184787671106939413, guid: 6222dbe7941326942bf0728edcc153fb,
         type: 3}
       propertyPath: m_Color.r
-      value: 0.033835888
+      value: 0.040643692
       objectReference: {fileID: 0}
     - target: {fileID: 6184787671106939413, guid: 6222dbe7941326942bf0728edcc153fb,
         type: 3}
       propertyPath: m_SortingOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6184787671106939413, guid: 6222dbe7941326942bf0728edcc153fb,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6222dbe7941326942bf0728edcc153fb, type: 3}
 --- !u!1 &5695983852038747418 stripped
