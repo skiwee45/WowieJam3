@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Player
+  m_Name: OrangeGlow
   m_Shader: {fileID: -6465566751694194690, guid: aeebfb061576613459cfeef3ee3727ac,
     type: 3}
   m_ShaderKeywords: ETC1_EXTERNAL_ALPHA
@@ -21,7 +21,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _DiamondE:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: cb87c9792e14afc4eb9644bc6e26eeca, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Emission:
@@ -29,9 +29,9 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: cb87c9792e14afc4eb9644bc6e26eeca, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats: []
     m_Colors:
-    - Color_6F73B5D8: {r: 0, g: 3.8478467, b: 4.867144, a: 0}
+    - Color_6F73B5D8: {r: 4.2870936, g: 2.022133, b: 0, a: 0}

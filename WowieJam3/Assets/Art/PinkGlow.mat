@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Player 1
+  m_Name: PinkGlow
   m_Shader: {fileID: -6465566751694194690, guid: aeebfb061576613459cfeef3ee3727ac,
     type: 3}
   m_ShaderKeywords: ETC1_EXTERNAL_ALPHA
@@ -34,4 +34,4 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Floats: []
     m_Colors:
-    - Color_6F73B5D8: {r: 2.828427, g: 1.2755651, b: 0, a: 0}
+    - Color_6F73B5D8: {r: 2.2244353, g: 0.23083764, b: 1.9504339, a: 0}
