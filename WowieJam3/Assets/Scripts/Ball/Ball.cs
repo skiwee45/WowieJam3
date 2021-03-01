@@ -36,6 +36,7 @@ public class Ball : MonoBehaviour
 		{
 			HandleHitPlayer(otherGameObject);
 		}
+		ScreenShake.Instance.ShakeScreen(2, 0.2f);
 	}
 	
 	public void Reset(Vector2 position, float initialForce)
