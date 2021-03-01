@@ -33,7 +33,7 @@ public class TimeTracker : MonoBehaviour
 	// Update is called every frame, if the MonoBehaviour is enabled.
 	protected void Update()
 	{
-		timeText.text = timer.SecondsLeft.ToString();
+		timeText.text = Mathf.Round(timer.SecondsLeft).ToString();
 	}
 	
 	private void HandleTimerUp()

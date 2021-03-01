@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 /// <summary>
 /// keep score
@@ -8,6 +9,8 @@ using UnityEngine;
 /// </summary>
 public class ScoreManager : MonoBehaviour, IGameManager
 {
+	[SerializeField] private TMP_Text text;
+	
 	[field: SerializeField]
 	public int Score {get; private set;}
 	
@@ -20,6 +23,7 @@ public class ScoreManager : MonoBehaviour, IGameManager
 	public void AddScore()
 	{
 		Score ++;
+		text.text = Score.ToString();
 	}
 	
 	public void SetScore(int newScore)
