@@ -5,8 +5,24 @@ using UnityEngine.Events;
 using System.Linq;
 using Pixelplacement;
 
-public class GameManager : Singleton<GameManager>, IGameManager
+public class GameManager : MonoBehaviour, IGameManager
 {
+	private static GameManager _instance;
+
+	public static GameManager Instance { get { return _instance; } }
+
+
+	private void Awake()
+	{
+		if (_instance != null && _instance != this)
+		{
+			Destroy(this.gameObject);
+		} else {
+			_instance = this;
+		}
+	}
+	
+	
 	//config
 	[Header("Prefabs")]
 	[SerializeField] private GameObject playerPrefab;
@@ -33,7 +49,7 @@ public class GameManager : Singleton<GameManager>, IGameManager
 	public List<Component> GameManagers;
 	
 	// Awake is called when the script instance is being loaded.
-	protected void Awake()
+	protected void Start()
 	{
 		ballInitialForce = ballStartingInitialForce;
 		boxSpawnPosition = Vector2.zero;

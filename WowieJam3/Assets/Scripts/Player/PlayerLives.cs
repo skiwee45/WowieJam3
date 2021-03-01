@@ -12,7 +12,7 @@ public class FloatEvent : UnityEvent<float>{}
 public class PlayerLives : MonoBehaviour
 {
 	//config
-	[SerializeField] private float maxLives;
+	public float maxLives;
 	public FloatEvent onLoseLife;
 	public UnityEvent onDeath;
 	
@@ -31,6 +31,7 @@ public class PlayerLives : MonoBehaviour
 		if (currentLives == 0)
 		{
 			onDeath?.Invoke();
+			return;
 		}
 		onLoseLife?.Invoke(currentLives);
 	}

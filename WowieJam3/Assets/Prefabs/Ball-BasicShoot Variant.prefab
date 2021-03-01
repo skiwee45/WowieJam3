@@ -31,6 +31,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6109484081697993563, guid: d6fb73a7dcf29fd4eb93c6d36236a310,
         type: 3}
+      propertyPath: OnHitWall.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6109484081697993563, guid: d6fb73a7dcf29fd4eb93c6d36236a310,
+        type: 3}
       propertyPath: OnHitWall.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 0}

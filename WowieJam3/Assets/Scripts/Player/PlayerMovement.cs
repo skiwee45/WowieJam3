@@ -14,6 +14,7 @@ public class PlayerMovement : MonoBehaviour
 	
 	//references
 	private Rigidbody2D rb;
+	private MaskedSlider dashCooldownUI;
 	private Timer dashCooldownTimer;
 	
 	//state
@@ -25,6 +26,8 @@ public class PlayerMovement : MonoBehaviour
 	protected void Start()
 	{
 		rb = GetComponent<Rigidbody2D>();
+		
+		dashCooldownUI = FindObjectOfType<MaskedSlider>();
 		
 		dashCooldownTimer = gameObject.AddComponent<Timer>();
 		dashCooldownTimer.Duration = dashCooldown;
@@ -52,6 +55,10 @@ public class PlayerMovement : MonoBehaviour
 	private void FixedUpdate()
 	{
 		Move(deltaMovement * speed, dash);
+		if (dashCooldownTimer.Running)
+		{
+			dashCooldownUI.moveSlider(dashCooldownTimer.SecondsLeft / dashCooldown);
+		}
 	}
 	
 	private void Move(Vector2 move, bool dash)

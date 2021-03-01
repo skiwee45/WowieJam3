@@ -33,6 +33,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ball-BouncyShoot Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 4125992334976870362, guid: 6222dbe7941326942bf0728edcc153fb,
+        type: 3}
+      propertyPath: OnHitWall.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4125992334976870364, guid: 6222dbe7941326942bf0728edcc153fb,
         type: 3}
       propertyPath: m_Color.b

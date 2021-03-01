@@ -9,7 +9,7 @@ using UnityEngine;
 public class ScoreManager : MonoBehaviour, IGameManager
 {
 	[field: SerializeField]
-	public float Score {get; private set;}
+	public int Score {get; private set;}
 	
     // Start is called before the first frame update
 	void Awake()
@@ -22,7 +22,7 @@ public class ScoreManager : MonoBehaviour, IGameManager
 		Score ++;
 	}
 	
-	public void SetScore(float newScore)
+	public void SetScore(int newScore)
 	{
 		Score = newScore;
 	}
