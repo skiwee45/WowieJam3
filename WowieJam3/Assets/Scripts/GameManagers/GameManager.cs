@@ -122,6 +122,10 @@ public class GameManager : MonoBehaviour, IGameManager
 		Debug.Log("Spawn Ball");
 		
 		var newBall = Instantiate(ballPrefabs[ballIndex]).GetComponent<Ball>();
+		if (ballIndex == 1)
+		{
+			TryGetComponent<UIManager>().EnableBallTimer(true);
+		}
 		Balls.Add(newBall);
 		newBall.Reset(GetRandomBallPosition(), ballInitialForce);
 		newBall.OnHitWall.AddListener(TryGetComponent<ScoreManager>().AddScore);
@@ -134,6 +138,7 @@ public class GameManager : MonoBehaviour, IGameManager
 	
 	public void ResetBalls()
 	{
+		TryGetComponent<UIManager>().StartBallTimer();
 		//reset balls and bullets
 		foreach (var ball in Balls)
 		{
